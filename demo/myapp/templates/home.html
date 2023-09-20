@@ -22,7 +22,7 @@
 				<div class="col-md-7">
 					<div class="card-block">
 						<h2 class="card-title"><a href="{% url 'myapp:detail' %}">{{ post.title }}</a></h2>
-						<h4 class="card-text">{{ post.content }}</h4>
+						<h4 class="card-text">{{ post.content|truncatewords:20 }}</h4>
 						<div class="metafooter">
 							<div class="wrapfooter">
 								<span class="meta-footer-thumb">
