@@ -2,10 +2,15 @@ from django.shortcuts import render, redirect
 from .form import PostForm
 from datetime import datetime
 from .models import Post
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
-    all_posts = Post.objects.order_by('-title')
+    all_posts = Post.objects.all()
+    # Change 'per_page' to the desired number of items per page
+    paginator = Paginator(all_posts, per_page=4)
+    page = request.GET.get('page')
+    all_posts = paginator.get_page(page)
     return render(request, 'home.html', {'recent_posts': all_posts})
 
 def post(request):
