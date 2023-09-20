@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Post Page{% endblock %}
+{% block content %}
+
+<!-- Begin Article
+================================================== -->
+<div class="container">
+    <form method="post" action="{% url 'myapp:create_post' %}">
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <h1 class="display-5 fw-bold">Create a post</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+        </div>
+    </form>
+</div>
+<!-- End Article
+================================================== -->
+
+
+{% endblock %}
