@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .form import PostForm
 from datetime import datetime
 from .models import Post
@@ -13,7 +13,6 @@ def home(request):
     return render(request, 'home.html', {'recent_posts': all_posts})
 
 def post(request):
-    submitted = False
     form = PostForm
     return render(request, 'post.html', {'form': form})
 
@@ -35,5 +34,8 @@ def create_post(request):
 
     return render(request, 'post.html', {'form': form})
 
-def detail(request):
-    return render(request, 'detail.html')
+
+def detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    # Your view logic here
+    return render(request, 'detail.html', {'post': post})
