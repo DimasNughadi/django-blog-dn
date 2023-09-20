@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-md-7">
 					<div class="card-block">
-						<h2 class="card-title"><a href="post.html">{{ post.title }}</a></h2>
+						<h2 class="card-title"><a href="{% url 'myapp:detail' %}">{{ post.title }}</a></h2>
 						<h4 class="card-text">{{ post.content }}</h4>
 						<div class="metafooter">
 							<div class="wrapfooter">

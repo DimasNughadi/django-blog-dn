@@ -7,18 +7,18 @@ from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
     all_posts = Post.objects.all()
-    # Change 'per_page' to the desired number of items per page
     paginator = Paginator(all_posts, per_page=4)
     page = request.GET.get('page')
     all_posts = paginator.get_page(page)
     return render(request, 'home.html', {'recent_posts': all_posts})
 
 def post(request):
-    return render(request, 'post.html')
+    submitted = False
+    form = PostForm
+    return render(request, 'post.html', {'form': form})
 
 def author(request):
     return render(request, 'author.html')
-
 
 def post_list(request):
     posts = Post.objects.all()
@@ -34,3 +34,6 @@ def create_post(request):
         form = PostForm()
 
     return render(request, 'post.html', {'form': form})
+
+def detail(request):
+    return render(request, 'detail.html')
